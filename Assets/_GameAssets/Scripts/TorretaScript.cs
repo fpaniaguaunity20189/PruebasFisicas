@@ -5,6 +5,7 @@ using UnityEngine;
 public class TorretaScript : MonoBehaviour {
     [SerializeField] GameObject prefabProyectil;
     [SerializeField] Transform puntoGeneracion;
+    [SerializeField] Transform baseCanyon;
     [SerializeField] Transform ejeCanyon;
     [SerializeField] float fuerza = 100;
 
@@ -17,7 +18,9 @@ public class TorretaScript : MonoBehaviour {
         }
         float xR = Input.GetAxis("Vertical");
         float yR = Input.GetAxis("Horizontal");
-        ejeCanyon.Rotate(xR*-1, yR, 0);
+        baseCanyon.Rotate(0, yR, 0);
+        ejeCanyon.Rotate(xR*-1, 0, 0);
+
     }
 
 }

@@ -313,7 +313,8 @@ MonoBehaviour:
   prefabProyectil: {fileID: 1222260116736750, guid: c5128937f6630034c97458aa398532b4,
     type: 2}
   puntoGeneracion: {fileID: 4796612001342096}
-  ejeCanyon: {fileID: 4281633014208042}
+  baseCanyon: {fileID: 4281633014208042}
+  ejeCanyon: {fileID: 4645104559547062}
   fuerza: 500
 --- !u!135 &135285339103415400
 SphereCollider:
