@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TroncomovilScript : MonoBehaviour {
+    public Material materialFreno;
     public Text txtFrenoMano;
     public Text txtSpeed;
     public Text txtMarcha;
@@ -17,12 +18,7 @@ public class TroncomovilScript : MonoBehaviour {
     float fSpeed;
     private WheelCollider wcFrontL, wcFrontR, wcBackL, wcBackR;
 
-
     private void Start() {
-        //Material matPilotos = GetComponentInChildren<Material>();
-        //matPilotos.SetColor("_EmissionColor", Color.red);
-
-
         wcFrontL = GameObject.Find("FrontL").GetComponent<WheelCollider>();
         wcFrontR = GameObject.Find("FrontR").GetComponent<WheelCollider>();
         wcBackL = GameObject.Find("BackL").GetComponent<WheelCollider>();
@@ -43,7 +39,6 @@ public class TroncomovilScript : MonoBehaviour {
         }
     }
 
-
     private void FixedUpdate() {
         //RECOGER COORDENADAS
         vPos = Input.GetAxis("Vertical");
@@ -55,15 +50,21 @@ public class TroncomovilScript : MonoBehaviour {
 
         if (!frenoManoActivo) {
             if (vPos > 0) {
+                //PINTA EN LA UI LA MARCHA
                 txtMarcha.text = "1";
+                //DESACTIVA LA LUZ DE FRENADO
+                materialFreno.DisableKeyword("_EMISSION");
                 //RUEDAS MOTRICES
                 SoltarFreno();
                 wcBackL.motorTorque = fuerzaMaximaMotor * vPos;
                 wcBackR.motorTorque = fuerzaMaximaMotor * vPos;
-            } else if (vPos < 0 && fSpeed>0.0001) {
+            } else if (vPos < 0 && fSpeed>0) {
+                //PINT EN LA UI LA MARCHA
                 txtMarcha.text = "0";
+                //ACTIVA LA LUZ DE FRENADO
+                materialFreno.EnableKeyword("_EMISSION");
                 Frenar();
-            } else if (vPos < 0 && fSpeed<=0.0001) {
+            } else if (vPos < 0 && fSpeed<=0) {
                 txtMarcha.text = "R";
                 SoltarFreno();
                 wcBackL.motorTorque = fuerzaMaximaMotor * vPos;

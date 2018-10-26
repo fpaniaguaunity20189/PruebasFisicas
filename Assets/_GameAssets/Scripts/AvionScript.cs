@@ -14,12 +14,12 @@ public class AvionScript : MonoBehaviour {
             Time.deltaTime  *
             speed
         );
-        //ROTAMOS EL AVION HACIA ARRIBA Y HACIA ABAJO
+        //Rotamos el avion
         transform.Rotate(new Vector3(vPos, hPos, hPos*-1));
 
         /*
          * PARA UN ELEMENTO TERRESTRE
-        GetComponent<CharacterController>().SimpleMove(
+        bool estaEnTierra = GetComponent<CharacterController>().SimpleMove(
             Vector3.forward * 
             Time.deltaTime * 
             speed *

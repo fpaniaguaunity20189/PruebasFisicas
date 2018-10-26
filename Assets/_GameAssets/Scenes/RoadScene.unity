@@ -1023,10 +1023,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a693ff4c46dde45837b60d8f3d363f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialFreno: {fileID: 2100000, guid: 09d803eeff3922b40a2c1221a71739f2, type: 2}
   txtFrenoMano: {fileID: 1100078123}
   txtSpeed: {fileID: 1379442731}
   txtMarcha: {fileID: 199046114}
-  fuerzaMaximaMotor: 100
+  fuerzaMaximaMotor: 200
   anguloMaximoRotacion: 20
   incrementoFrenado: 10
 --- !u!1 &1826974879
