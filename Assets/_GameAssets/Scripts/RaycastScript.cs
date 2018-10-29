@@ -12,9 +12,35 @@ public class RaycastScript : MonoBehaviour {
             Disparar();
         }
 	}
+    //RaycastAll
+    /*
+    public void Disparar() {
+        RaycastHit[] rhs = Physics.RaycastAll(
+            origen.position,
+            origen.forward);
+        if (rhs.Length != 0) {
+            for (int i = 0; i < rhs.Length; i++) {
+                print(rhs[i].transform.gameObject.name);
+            }
+        }
+    }
+    */
+
+
+    // Raycast
     private void Disparar() {
-        bool hayImpacto = Physics.Raycast(origen.position, origen.forward);
-        Debug.DrawRay(origen.position, origen.forward, Color.red, 50);
-        texto.text = ""+hayImpacto;
+        RaycastHit rh;
+        //bool hayImpacto = Physics.Raycast(origen.position, origen.forward);
+        bool hayImpacto = Physics.Raycast(
+            origen.position, 
+            origen.forward,
+            out rh);
+        //Debug.DrawRay(origen.position, origen.forward, Color.red, 50);
+        texto.text = "" + hayImpacto;
+        if (hayImpacto) {
+            string nombreObjectoImpactado = rh.transform.gameObject.name;
+            texto.text = nombreObjectoImpactado;
+        }
+        
     }
 }
